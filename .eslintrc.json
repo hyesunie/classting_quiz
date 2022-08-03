@@ -38,6 +38,7 @@
         "allowExpressions": true
       }
     ],
+    "react/function-component-definition": "off",
     "prettier/prettier": [
       "error",
       {
