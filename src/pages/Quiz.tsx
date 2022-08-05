@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect, createElement } from 'react';
+import React, { ReactElement, useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { QuizInfo } from './Home';
 import './Quiz.css';
@@ -32,9 +32,12 @@ const Quiz: React.FC = (): ReactElement => {
     if (!$answer || isNext) return;
     $answer.style.backgroundColor = 'yellow';
     setClickedElement($answer);
+    const quiz = quizList[Number(id) - 1];
     if ($answer.id === String(answerIdx)) {
       setAnswer(true);
+      quiz.isAnswer = true;
     }
+    quiz.userIdx = Number($answer.id);
     setNext(true);
   };
 
@@ -77,7 +80,11 @@ const Quiz: React.FC = (): ReactElement => {
                 다음문제
               </Link>
             ) : (
-              <Link to="/result" className="quiz__result-button">
+              <Link
+                to="/result"
+                state={quizList}
+                className="quiz__result-button"
+              >
                 결과보기
               </Link>
             )}
