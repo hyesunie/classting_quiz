@@ -1,5 +1,6 @@
-import React, { ReactElement, useState, useEffect } from 'react';
+import React, { ReactElement, useState, useEffect, useCallback } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
+import Timer from '../components/Timer';
 import { QuizInfo } from './Home';
 import './Quiz.css';
 
@@ -8,6 +9,8 @@ const Quiz: React.FC = (): ReactElement => {
   // TODO: 전역으로 빼야할듯
   const [isAnswer, setAnswer] = useState<boolean>(false);
   const [clickedElement, setClickedElement] = useState<HTMLLIElement>();
+  const [isStop, setIsStop] = useState<boolean>(false);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,6 +35,7 @@ const Quiz: React.FC = (): ReactElement => {
     if (!$answer || isNext) return;
     $answer.style.backgroundColor = 'yellow';
     setClickedElement($answer);
+
     const quiz = quizList[Number(id) - 1];
     if ($answer.id === String(answerIdx)) {
       setAnswer(true);
@@ -41,12 +45,19 @@ const Quiz: React.FC = (): ReactElement => {
     setNext(true);
   };
 
+  const onClickResult = useCallback(() => {
+    setIsStop(true);
+  }, [setIsStop]);
+
   const styles = {
     answer: [{ color: 'green' }, { color: 'red' }],
   };
 
   return (
     <div className="quiz">
+      <section className="timer-wrapper">
+        <Timer isStop={isStop} />
+      </section>
       <section className="quiz-wrapper">
         <div className="quiz__title-wrapper">
           <span className="quiz__title__number">{id}.</span>
@@ -84,6 +95,7 @@ const Quiz: React.FC = (): ReactElement => {
                 to="/result"
                 state={quizList}
                 className="quiz__result-button"
+                onClick={onClickResult}
               >
                 결과보기
               </Link>
