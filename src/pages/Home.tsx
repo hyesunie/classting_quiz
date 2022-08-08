@@ -31,6 +31,7 @@ function Home(): ReactElement {
     })
       .then((response) => response.json())
       .then(({ results }) => {
+        console.log(results);
         const newQuizList = results.map((e: FetchInfo): QuizInfo => {
           const {
             question,
