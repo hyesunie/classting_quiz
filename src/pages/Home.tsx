@@ -14,6 +14,8 @@ export interface QuizInfo {
   question: string;
   answerIdx: number;
   answerList: string[];
+  userIdx: number | null;
+  isAnswer: boolean;
 }
 
 function randomIndex(min: number, max: number): number {
@@ -41,7 +43,13 @@ function Home(): ReactElement {
 
           answerList.splice(answerIdx, 0, correctAnswer);
 
-          return { question, answerIdx, answerList };
+          return {
+            question,
+            answerIdx,
+            answerList,
+            userIdx: null,
+            isAnswer: false,
+          };
         });
 
         setQuizList(newQuizList);
