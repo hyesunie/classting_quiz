@@ -4,6 +4,10 @@ export interface TimerProps {
   isStop: boolean;
 }
 
+export const changeTimeFormat = (allSecond: number): string => {
+  return `${Math.floor(allSecond / 60)}분 ${allSecond % 60}초`;
+};
+
 const Timer: React.FC<TimerProps> = ({ isStop }: TimerProps): ReactElement => {
   const [currentTime, setCurrentTime] = useState<number>(0);
 
@@ -23,7 +27,7 @@ const Timer: React.FC<TimerProps> = ({ isStop }: TimerProps): ReactElement => {
     }
   }, [isStop, id]);
 
-  return <div>{`${Math.floor(currentTime / 60)}분 ${currentTime % 60}초`}</div>;
+  return <div>{changeTimeFormat(currentTime)}</div>;
 };
 
 export default Timer;
