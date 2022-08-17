@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  ReactElement,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 export interface TimerProps {
   isStop: boolean;
@@ -12,6 +6,7 @@ export interface TimerProps {
 
 const Timer: React.FC<TimerProps> = ({ isStop }: TimerProps): ReactElement => {
   const [currentTime, setCurrentTime] = useState<number>(0);
+
   const [id, setId] = useState(() => {
     let countTime = 0;
 
@@ -24,6 +19,7 @@ const Timer: React.FC<TimerProps> = ({ isStop }: TimerProps): ReactElement => {
   useEffect(() => {
     if (isStop) {
       clearInterval(id);
+      localStorage.setItem('Time', String(currentTime));
     }
   }, [isStop, id]);
 

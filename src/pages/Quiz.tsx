@@ -1,4 +1,10 @@
-import React, { ReactElement, useState, useEffect, useCallback } from 'react';
+import React, {
+  ReactElement,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import Timer from '../components/Timer';
 import { QuizInfo } from './Home';
@@ -10,6 +16,7 @@ const Quiz: React.FC = (): ReactElement => {
   const [isAnswer, setAnswer] = useState<boolean>(false);
   const [clickedElement, setClickedElement] = useState<HTMLLIElement>();
   const [isStop, setIsStop] = useState<boolean>(false);
+  const resultButton = useRef<HTMLAnchorElement>(null);
 
   const { id } = useParams();
 
@@ -20,6 +27,12 @@ const Quiz: React.FC = (): ReactElement => {
     clickedElement.style.backgroundColor = 'inherit';
     setClickedElement(clickedElement);
   }, [id]);
+
+  useEffect(() => {
+    if (isStop) {
+      resultButton.current?.click();
+    }
+  }, [isStop]);
 
   const { state } = useLocation();
   const quizList = state as QuizInfo[];
@@ -45,9 +58,13 @@ const Quiz: React.FC = (): ReactElement => {
     setNext(true);
   };
 
-  const onClickResult = useCallback(() => {
-    setIsStop(true);
-  }, [setIsStop]);
+  const onClickResult = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      e.preventDefault();
+      setIsStop(true);
+    },
+    [setIsStop]
+  );
 
   const styles = {
     answer: [{ color: 'green' }, { color: 'red' }],
@@ -91,14 +108,22 @@ const Quiz: React.FC = (): ReactElement => {
                 다음문제
               </Link>
             ) : (
-              <Link
-                to="/result"
-                state={quizList}
-                className="quiz__result-button"
-                onClick={onClickResult}
-              >
-                결과보기
-              </Link>
+              <>
+                <Link
+                  to="/result"
+                  state={quizList}
+                  // className="quiz__result-button"
+                  ref={resultButton}
+                  style={{ display: 'none' }}
+                />
+                <a
+                  href="/"
+                  onClick={onClickResult}
+                  className="quiz__result-button"
+                >
+                  결과보기
+                </a>
+              </>
             )}
           </article>
         )}
