@@ -1,0 +1,13 @@
+.chart__viewport {
+  width: 20em;
+  height: 3em;
+  border-radius: 10em;
+  background-color: rgb(240, 255, 124);
+  overflow: hidden;
+}
+
+.true {
+  display: inline-block;
+  height: 100%;
+  background-color: rgb(223, 93, 0);
+}
