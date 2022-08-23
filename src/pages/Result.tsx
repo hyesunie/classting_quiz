@@ -41,9 +41,10 @@ const Result: React.FC = (): ReactElement => {
         <Chart quizCnt={quizList.length} resultBoard={resultObj} />
         <time>시간 : {changeTimeFormat(Number(time))}</time>
       </article>
-      <section>
-        <Link to="/">다시 풀기</Link>
-      </section>
+      <Link to="/">다시 풀기</Link>
+      <Link to="/wrong-answer-note" state={quizList}>
+        오답 노트
+      </Link>
     </main>
   );
 };

@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Result from './pages/Result';
+import WrongAnswerNote from './pages/WrongAnswerNote';
 
 function App(): ReactElement {
   return (
@@ -11,6 +12,7 @@ function App(): ReactElement {
       <Route path="/" element={<Home />} />
       <Route path="/quiz/:id" element={<Quiz />} />
       <Route path="/result" element={<Result />} />
+      <Route path="/wrong-answer-note" element={<WrongAnswerNote />} />
     </Routes>
   );
 }
