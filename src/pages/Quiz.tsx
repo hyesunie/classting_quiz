@@ -6,7 +6,6 @@ import './Quiz.css';
 
 const Quiz: React.FC = (): ReactElement => {
   const [isNext, setNext] = useState<boolean>(false);
-  // TODO: 전역으로 빼야할듯
   const [isAnswer, setAnswer] = useState<boolean>(false);
   const [clickedElement, setClickedElement] = useState<HTMLLIElement>();
 
