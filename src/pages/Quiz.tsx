@@ -81,17 +81,25 @@ const Quiz: React.FC = (): ReactElement => {
                 : `틀렸습니다. 정답: ${answerIdx + 1}번`}
             </div>
             {Number(id) !== quizList.length ? (
-              <Link to={nextId} state={quizList} className="quiz__next-button">
-                다음문제
-              </Link>
+              <div className="quiz__result-wrapper">
+                <Link
+                  to={nextId}
+                  state={quizList}
+                  className="quiz__next-button"
+                >
+                  다음문제
+                </Link>
+              </div>
             ) : (
-              <Link
-                to="/result"
-                state={quizList}
-                className="quiz__result-button"
-              >
-                결과보기
-              </Link>
+              <div className="quiz__result-wrapper">
+                <Link
+                  to="/result"
+                  state={quizList}
+                  className="quiz__result-button"
+                >
+                  결과보기
+                </Link>
+              </div>
             )}
           </article>
         )}
