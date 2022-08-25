@@ -73,18 +73,23 @@ const Quiz: React.FC = (): ReactElement => {
             );
           })}
         </ul>
-        {isNext && (
-          <article className="quiz__answer-wrapper">
-            <div style={isAnswer ? styles.answer[0] : styles.answer[1]}>
-              {isAnswer
-                ? '정답입니다.'
-                : `틀렸습니다. 정답: ${answerIdx + 1}번`}
-            </div>
-            {Number(id) !== quizList.length ? (
+      </section>
+      {isNext && (
+        <section className="quiz__answer-wrapper">
+          <div
+            className="quiz__grading"
+            style={isAnswer ? styles.answer[0] : styles.answer[1]}
+          >
+            {isAnswer ? '정답입니다.' : `틀렸습니다. 정답: ${answerIdx + 1}번`}
+          </div>
+          {Number(id) !== quizList.length ? (
+            <div className="quiz__result-wrapper">
               <Link to={nextId} state={quizList} className="quiz__next-button">
                 다음문제
               </Link>
-            ) : (
+            </div>
+          ) : (
+            <div className="quiz__result-wrapper">
               <Link
                 to="/result"
                 state={quizList}
@@ -92,10 +97,10 @@ const Quiz: React.FC = (): ReactElement => {
               >
                 결과보기
               </Link>
-            )}
-          </article>
-        )}
-      </section>
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 };
