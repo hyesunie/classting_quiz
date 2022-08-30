@@ -4,7 +4,7 @@ export const changeTimeFormat = (allSecond: number): string => {
   const min = Math.floor(allSecond / 60);
   const sec = allSecond % 60;
 
-  return `${min === 0 ? `` : `${min}분`}${sec}초`;
+  return `${min === 0 ? `` : `${min}분`} ${sec}초`;
 };
 
 const Timer: React.FC = (): ReactElement => {

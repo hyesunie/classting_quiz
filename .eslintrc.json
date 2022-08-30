@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks"],
   "rules": {
+    "react/require-default-props": [0],
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "import/extensions": [
       "error",

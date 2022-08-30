@@ -31,7 +31,6 @@ function Home(): ReactElement {
     })
       .then((response) => response.json())
       .then(({ results }) => {
-        console.log(results);
         const newQuizList = results.map((e: FetchInfo): QuizInfo => {
           const {
             question,
@@ -58,11 +57,15 @@ function Home(): ReactElement {
   }, []);
 
   return (
-    <div className="home-wrapper">
-      <Link to="/quiz/1" state={quizList}>
-        <div className="home__start-button">퀴즈 시작하기!!</div>
-      </Link>
-    </div>
+    <main className="home">
+      {quizList.length > 0 ? (
+        <Link to="/quiz/1" state={quizList}>
+          <div className="home__start-button">퀴즈 시작하기!!</div>
+        </Link>
+      ) : (
+        <div>문제 로딩 중</div>
+      )}
+    </main>
   );
 }
 
