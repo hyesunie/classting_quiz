@@ -8,7 +8,7 @@ import WrongAnswerNote from './pages/WrongAnswerNote';
 
 function App(): ReactElement {
   return (
-    <HashRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quiz/:id" element={<Quiz />} />
