@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/hyesunie/quiz_app/static/css/main.f107352a.css",
-    "main.js": "/hyesunie/quiz_app/static/js/main.9ac2b1d9.js",
-    "index.html": "/hyesunie/quiz_app/index.html",
-    "main.f107352a.css.map": "/hyesunie/quiz_app/static/css/main.f107352a.css.map",
-    "main.9ac2b1d9.js.map": "/hyesunie/quiz_app/static/js/main.9ac2b1d9.js.map"
+    "main.css": "/quiz_app/static/css/main.f107352a.css",
+    "main.js": "/quiz_app/static/js/main.9ac2b1d9.js",
+    "index.html": "/quiz_app/index.html",
+    "main.f107352a.css.map": "/quiz_app/static/css/main.f107352a.css.map",
+    "main.9ac2b1d9.js.map": "/quiz_app/static/js/main.9ac2b1d9.js.map"
   },
   "entrypoints": [
     "static/css/main.f107352a.css",
