@@ -1,13 +1,30 @@
+.chart {
+  font-size: 1em;
+}
+
+.chart h2 {
+  text-align: center;
+  margin-bottom: 10%;
+  margin-top: 0;
+}
+
 .chart__viewport {
   width: 20em;
   height: 3em;
   border-radius: 10em;
   background-color: rgb(240, 255, 124);
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .true {
   display: inline-block;
   height: 100%;
   background-color: rgb(223, 93, 0);
+}
+
+@media screen and (max-width: 412px) {
+  .chart {
+    font-size: 0.8em;
+  }
 }

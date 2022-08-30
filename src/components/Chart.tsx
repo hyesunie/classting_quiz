@@ -15,7 +15,7 @@ const Chart: React.FC<ChartProps> = ({
   const ratio = Math.ceil((trueCnt / quizCnt) * 100);
 
   return (
-    <section>
+    <section className="chart">
       <h2>
         Score : {trueCnt}/{quizCnt}
       </h2>
