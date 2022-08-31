@@ -8,14 +8,12 @@ import WrongAnswerNote from './pages/WrongAnswerNote';
 
 function App(): ReactElement {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/quiz/:id" element={<Quiz />} />
-        <Route path="/result" element={<Result />} />
-        <Route path="/wrong-answer-note" element={<WrongAnswerNote />} />
-      </Routes>
-    </HashRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/quiz/:id" element={<Quiz />} />
+      <Route path="/result" element={<Result />} />
+      <Route path="/wrong-answer-note" element={<WrongAnswerNote />} />
+    </Routes>
   );
 }
 
