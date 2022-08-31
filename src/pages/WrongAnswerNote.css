@@ -1,10 +1,10 @@
 .wrong-answer-note {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 1.2rem;
 }
 
 .quiz-list {
@@ -59,4 +59,25 @@
   color: rgb(129, 79, 74);
   font-weight: bold;
   margin-right: 1em;
+}
+
+@media screen and (max-width: 780px) {
+  .wrong-answer-note {
+    font-size: 1.1rem;
+  }
+  .quiz-element {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .wrong-answer-note {
+    font-size: 1rem;
+  }
+  .quiz-element {
+    width: 90%;
+  }
+  .quiz__answer-list {
+    width: 90%;
+  }
 }
